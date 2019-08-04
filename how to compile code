@@ -1,0 +1,3 @@
+g++ -o output foo.cpp
+./output
+//output will be the binary file
