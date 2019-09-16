@@ -3,6 +3,7 @@
 #include <cstdio>
 #include <cmath>
 #include <cstring>
+#include <fstream>
 #include <cctype>
 #include <string>
 #include <vector>
@@ -13,6 +14,7 @@
 #include <stack>
 #include <algorithm>
 #include <functional>
+#include<limits.h>
 using namespace std; 
 #define DEBUG(x) cout << '>' << #x << ':' << x << endl;
 #define REP(i,n) for(int i=0;i<(n);i++)
@@ -21,6 +23,7 @@ using namespace std;
 #define VI vector<int>
 #define VLL vector<LL>
 #define VIP vector< pair <int,int> >
+#define MI map<int,int>
 inline bool EQ(double a, double b) { return fabs(a-b) < 1e-9; }
 const int INF = 1<<29;
 typedef long long ll;
@@ -35,5 +38,11 @@ template<class T> void chmin(T & a, const T & b) { a = min(a, b); }
 /////////////////////////////////////////////////////////////////////
 int main()
 {
+    ifstream cin("input.txt");
+    ofstream cout("output.txt");
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);cout.tie(0);
+    
+    
     return 0;
 }

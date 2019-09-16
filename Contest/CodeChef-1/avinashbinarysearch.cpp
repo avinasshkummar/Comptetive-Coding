@@ -13,6 +13,7 @@
 #include <stack>
 #include <algorithm>
 #include <functional>
+#include<limits.h>
 using namespace std; 
 #define DEBUG(x) cout << '>' << #x << ':' << x << endl;
 #define REP(i,n) for(int i=0;i<(n);i++)
@@ -34,56 +35,56 @@ inline int ones(int n) { int res = 0; while(n && ++res) n-=n&(-n); return res; }
 template<class T> void chmax(T & a, const T & b) { a = max(a, b); }
 template<class T> void chmin(T & a, const T & b) { a = min(a, b); }
 /////////////////////////////////////////////////////////////////////
-
-
-//finding using hashing
-void FindCommonElementsHashing(VI small,VI big,int n)
+int LessThanorEqualTO( int key, int data[], const int len )
 {
-    MI hash;
-    REP(i,n)
-        hash.insert(pair<int,int>(small[i],1));
-    REP(i,big.size())
+    int low  = 0;
+    int high = len-1;
+    int mid;
+    while( high >= low )
     {
-        if(hash.find(big[i])!=hash.end())
-            hash[big[i]]++;
+        mid = low + ((high - low) / 2);
+
+        /**/ if (data[mid] < key) low  = mid + 1;
+        else if (data[mid] > key) high = mid - 1;
+        else 
+            return mid;
     }
-    MI::iterator itr;
-    for(itr=hash.begin();itr!=hash.end();itr++)
-    {
-        if((itr->second)>1)
-            cout<<itr->first<<' ';
-    }
+    if(data[mid]<key)
+        return mid;
+    return mid-1; // KEY_NOT_FOUND
 }
-void FindHash(VI arr,VI brr)
+int GreaterThanorEqualTO( int key, int data[], const int len )
 {
-    int sizeOfHash=min(arr.size(),brr.size());
-    if(arr.size()<brr.size())
+    int low  = 0;
+    int high = len-1;
+    int mid;
+    while( high >= low )
     {
-        FindCommonElementsHashing(arr,brr,sizeOfHash);
+        mid = low + ((high - low) / 2);
+
+        /**/ if (data[mid] < key) low  = mid + 1;
+        else if (data[mid] > key) high = mid - 1;
+        else 
+            return mid;
     }
-    else
-    {
-             FindCommonElementsHashing(brr,arr,sizeOfHash);
-    }
+    if(data[mid]>key)
+        return mid;
+    return mid+1; // KEY_NOT_FOUND
 }
-//hashing ends
-
-//with binary search
-
-//binary technique ends
-
 int main()
 {
-    int n,m;
-    cin>>n>>m;
-    VI arr(n),brr(m);
-    REP(i,n)
-        cin>>arr[i];
-    REP(i,m)
-        cin>>brr[i];
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);cout.tie(0);
+
+
+
+
+
+
+    int items[] = { 1, 3, 5, 7, 9, 11 };
+    int LENGTH  = sizeof(items) / sizeof(items[0]);
     
-    //Method 1 Hashing.
-    FindHash(arr,brr);
-    
+    cout<<endl<<LessThanorEqualTO(12,items,LENGTH)<<endl;
+    cout<<"hello";
     return 0;
 }

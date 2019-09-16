@@ -3,6 +3,7 @@
 #include <cstdio>
 #include <cmath>
 #include <cstring>
+#include <fstream>
 #include <cctype>
 #include <string>
 #include <vector>
@@ -13,6 +14,7 @@
 #include <stack>
 #include <algorithm>
 #include <functional>
+#include<limits.h>
 using namespace std; 
 #define DEBUG(x) cout << '>' << #x << ':' << x << endl;
 #define REP(i,n) for(int i=0;i<(n);i++)
@@ -34,56 +36,29 @@ inline int ones(int n) { int res = 0; while(n && ++res) n-=n&(-n); return res; }
 template<class T> void chmax(T & a, const T & b) { a = max(a, b); }
 template<class T> void chmin(T & a, const T & b) { a = min(a, b); }
 /////////////////////////////////////////////////////////////////////
-
-
-//finding using hashing
-void FindCommonElementsHashing(VI small,VI big,int n)
+string A="";
+void Binary(int n)
 {
-    MI hash;
-    REP(i,n)
-        hash.insert(pair<int,int>(small[i],1));
-    REP(i,big.size())
-    {
-        if(hash.find(big[i])!=hash.end())
-            hash[big[i]]++;
-    }
-    MI::iterator itr;
-    for(itr=hash.begin();itr!=hash.end();itr++)
-    {
-        if((itr->second)>1)
-            cout<<itr->first<<' ';
-    }
-}
-void FindHash(VI arr,VI brr)
-{
-    int sizeOfHash=min(arr.size(),brr.size());
-    if(arr.size()<brr.size())
-    {
-        FindCommonElementsHashing(arr,brr,sizeOfHash);
-    }
+    if(n<1)
+        cout<<A<<endl;
     else
     {
-             FindCommonElementsHashing(brr,arr,sizeOfHash);
+        A[n-1]=0;
+        Binary(n-1);
+        A[n-1]=1;
+        Binary(n-1);
     }
 }
-//hashing ends
-
-//with binary search
-
-//binary technique ends
 
 int main()
 {
-    int n,m;
-    cin>>n>>m;
-    VI arr(n),brr(m);
-    REP(i,n)
-        cin>>arr[i];
-    REP(i,m)
-        cin>>brr[i];
-    
-    //Method 1 Hashing.
-    FindHash(arr,brr);
+    ifstream cin("input.txt");
+    ofstream cout("output.txt");
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);cout.tie(0);
+
+    int n=2;
+    Binary(5);
     
     return 0;
 }
