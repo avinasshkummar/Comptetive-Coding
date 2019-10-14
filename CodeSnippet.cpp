@@ -1,21 +1,5 @@
-#include <iostream>
-#include <sstream>
-#include <cstdio>
-#include <cmath>
-#include <cstring>
-#include <fstream>
-#include <cctype>
-#include <string>
-#include <vector>
-#include <list>
-#include <set>
-#include <map>
-#include <queue>
-#include <stack>
-#include <algorithm>
-#include <functional>
-#include<limits.h>
-using namespace std; 
+#include<bits/stdc++.h>
+using namespace std;
 #define DEBUG(x) cout << '>' << #x << ':' << x << endl;
 #define REP(i,n) for(int i=0;i<(n);i++)
 #define FOR(i,a,b) for(int i=(a);i<=(b);i++)
@@ -42,7 +26,6 @@ int main()
     ofstream cout("output.txt");
     ios_base::sync_with_stdio(false);
     cin.tie(0);cout.tie(0);
-    
-    
+
     return 0;
 }
